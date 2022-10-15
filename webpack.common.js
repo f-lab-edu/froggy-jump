@@ -7,7 +7,7 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'build.js',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -26,9 +26,9 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              // useRelativePath: true,
+              useRelativePath: true,
               name: 'images/[name].[ext]?[hash]',
-              // publicPath: "./dist/",
+              publicPath: './dist/',
               limit: 10000,
             },
           },
@@ -42,10 +42,10 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html'),
-      inject: true,
       filename: path.resolve(__dirname, 'dist/index.html'),
+      inject: true,
     }),
-    new CleanWebpackPlugin({ filename: 'build.js' }),
+    new CleanWebpackPlugin({ filename: 'bundle.js' }),
   ],
 }
 

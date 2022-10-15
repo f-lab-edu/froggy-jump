@@ -1,0 +1,13 @@
+:root {
+  --green: #dfff00;
+  --board-gray: #e9ecf3;
+  --default-radius: 5px;
+}
+
+*,
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
