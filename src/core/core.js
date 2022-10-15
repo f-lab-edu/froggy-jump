@@ -1,22 +1,10 @@
-export default class Core {
-  $target
+export default class Core extends HTMLElement {
   $state
-  constructor($target) {
-    this.$target = $target
-    this.setup()
-    this.setEvent()
-    this.render()
+  constructor() {
+    super()
   }
 
   setup() {}
-
-  getTemplate() {
-    return ''
-  }
-
-  render() {
-    this.$target.innerHTML = this.getTemplate()
-  }
 
   setEvent() {}
 

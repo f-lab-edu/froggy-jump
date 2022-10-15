@@ -1,7 +1,8 @@
+import Core from 'core/core.js'
 import { getBoardStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class MainBoard extends HTMLElement {
+export default class MainBoard extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })

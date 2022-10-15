@@ -1,7 +1,8 @@
+import Core from 'core/core.js'
 import { getKanbanStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class MainKanban extends HTMLElement {
+export default class MainKanban extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })

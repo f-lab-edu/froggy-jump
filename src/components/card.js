@@ -1,7 +1,8 @@
+import Core from 'core/core.js'
 import { getCardStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class MainCard extends HTMLElement {
+export default class MainCard extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
