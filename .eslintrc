@@ -1,0 +1,16 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "parser": "@babel/eslint-parser",
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": ["simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}
