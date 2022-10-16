@@ -19,8 +19,7 @@ export default class MainKanban extends Core {
   }
 
   render() {
-    const self = this
-    createTemplate(self, this.getTemplate())
+    createTemplate(this)
   }
 }
 

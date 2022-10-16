@@ -16,8 +16,7 @@ export default class MainApp extends Core {
   }
 
   render() {
-    const self = this
-    createTemplate(self, this.getTemplate())
+    createTemplate(this)
   }
 }
 
