@@ -40,6 +40,73 @@ export const getKanbanStyle = () => {
   `
 }
 
+export const getKanbanHeaderStyle = () => {
+  return `
+  <style>
+    #kanban-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px;
+    }
+    .step-wrapper {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .counter {
+      display: inline-block;
+      background: var(--gray);
+      padding: 2px;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      font-size: var(--font-size-small);
+      text-align: center;
+    }
+    .step {
+      font-size: var(--font-size-small);
+    }
+    .button-wrapper {
+      display: flex;
+      gap: 5px;
+    }
+    .add-button {
+      width: 15px;
+      height: 15px;
+    }
+    .add-button svg {
+      -webkit-transition: all 0.1s; /* Safari */
+      transition: all 0.1s;
+      fill: var(--gray);
+    }
+    .add-button:hover svg {
+      fill: black;
+    }
+    .cancel-button {
+      width: 15px;
+      height: 15px;
+    }
+    .cancel-button svg {
+      -webkit-transition: all 0.1s; /* Safari */
+      transition: all 0.1s;
+      fill: var(--gray);
+    }
+    .cancel-button:hover svg {
+      fill: black;
+    }
+    button {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+  </style>
+  `
+}
+
 export const getCardStyle = () => {
   return `
   <style>

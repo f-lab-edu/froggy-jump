@@ -8,6 +8,10 @@ export default class Core extends HTMLElement {
 
   setEvent() {}
 
+  $(query) {
+    return this.shadowRoot.querySelector(query)
+  }
+
   setState(newState) {
     this.$state = { ...this.$state, ...newState }
     this.render()

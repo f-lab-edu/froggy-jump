@@ -13,9 +13,9 @@ export default class MainBoard extends Core {
     return `
       ${getBoardStyle()}
       <main id="board">
-        <main-kanban></main-kanban>
-        <main-kanban></main-kanban>
-        <main-kanban></main-kanban>
+        <main-kanban title="backLog"></main-kanban>
+        <main-kanban title="inProgress"></main-kanban>
+        <main-kanban title="done"></main-kanban>
       </main>
     `
   }
