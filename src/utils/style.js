@@ -36,23 +36,6 @@ export const getKanbanStyle = () => {
       height: 600px;
       border-radius: var(--default-radius);
     }
-  </style>
-  `
-}
-
-export const getKanbanHeaderStyle = () => {
-  return `
-  <style>
-    #kanban-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 5px;
-    }
-    .step-wrapper {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
     .counter {
       display: inline-block;
       background: var(--gray);
@@ -65,10 +48,6 @@ export const getKanbanHeaderStyle = () => {
     }
     .step {
       font-size: var(--font-size-small);
-    }
-    .button-wrapper {
-      display: flex;
-      gap: 5px;
     }
     .add-button {
       width: 15px;
@@ -102,6 +81,27 @@ export const getKanbanHeaderStyle = () => {
       font: inherit;
       cursor: pointer;
       outline: inherit;
+    }
+  </style>
+  `
+}
+
+export const getKanbanHeaderStyle = () => {
+  return `
+  <style>
+    #kanban-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px;
+    }
+    .step-wrapper {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .button-wrapper {
+      display: flex;
+      gap: 5px;
     }
   </style>
   `

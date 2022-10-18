@@ -12,8 +12,10 @@ export default class Core extends HTMLElement {
     return this.shadowRoot.querySelector(query)
   }
 
+  getTemplate() {}
+
   setState(newState) {
     this.$state = { ...this.$state, ...newState }
-    this.render()
+    this.getTemplate()
   }
 }
