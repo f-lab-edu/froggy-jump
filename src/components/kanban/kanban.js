@@ -62,12 +62,10 @@ export default class MainKanban extends Core {
 
   toggleAddInput(isOpen) {
     if (isOpen) {
-      this.$('.add-input').remove()
+      this.$('add-textarea').remove()
     } else {
-      let div = document.createElement('div')
-      div.setAttribute('class', 'add-input')
-      div.textContent = 'test'
-      this.$('#kanban').append(div)
+      let textarea = document.createElement('add-textarea')
+      this.$('#kanban').append(textarea)
     }
   }
 

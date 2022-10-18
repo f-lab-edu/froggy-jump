@@ -107,6 +107,49 @@ export const getKanbanHeaderStyle = () => {
   `
 }
 
+export const getAddTextareaStyle = () => {
+  return `
+  <style>
+    #add-textarea {
+      margin: 10px 0;
+      width: 100%;
+    }
+    .textarea {
+      padding: 10px;
+      width: 100%;
+      height: 100px;
+      border: 1px solid var(--green);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .button-wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 5px 0;
+    }
+    .add-button {
+      background: var(--deep-green);
+    }
+    .cancel-button {
+      background: white;
+    }
+    button {
+      width: 100%;
+      background: none;
+      color: inherit;
+      border: none;
+      border-radius: var(--default-radius);
+      padding: 5px 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      font-size: var(--font-size-small);
+    }
+  </style>
+  `
+}
+
 export const getCardStyle = () => {
   return `
   <style>
