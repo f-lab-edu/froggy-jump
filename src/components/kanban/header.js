@@ -19,7 +19,7 @@ export default class KanbanHeader extends Core {
         </div>
         <div class="button-wrapper">
           <slot name="add-button"></slot>
-          <slot name="cancel-button"></slot>
+          <slot name="kanban-delete-button"></slot>
         </div>
       </div>
     `

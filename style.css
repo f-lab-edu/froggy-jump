@@ -1,5 +1,8 @@
 :root {
   --green: #dfff00;
+  --green-off: #dfff004d;
+  --black-off: #0000004d;
+  --white-off: #ffffffb3;
   --deep-green: #00ff00;
   --board-gray: #e9ecf3;
   --gray: #c4c4c4;

@@ -16,6 +16,5 @@ export default class Core extends HTMLElement {
 
   setState(newState) {
     this.$state = { ...this.$state, ...newState }
-    this.getTemplate()
   }
 }

@@ -2,7 +2,7 @@ import Core from 'core/core.js'
 import { getAddTextareaStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class AddTextarea extends Core {
+export default class KanbanNote extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -13,10 +13,10 @@ export default class AddTextarea extends Core {
     return `
       ${getAddTextareaStyle()}
       <section id="add-textarea">
-        <textarea class="textarea" placeholder="Enter a note"></textarea>
+        <slot name="note"></slot>
         <div class="button-wrapper">
-          <button class="add-button">Add</button>
-          <button class="cancel-button">Cancel</button>
+          <slot name="note-button"></slot>
+          <slot name="note-cancel-button"></slot>
         </div>
       </section>
     `
@@ -29,4 +29,4 @@ export default class AddTextarea extends Core {
   }
 }
 
-customElements.define('add-textarea', AddTextarea)
+customElements.define('kanban-note', KanbanNote)

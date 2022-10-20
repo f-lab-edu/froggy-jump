@@ -2,8 +2,6 @@ import Core from 'core/core.js'
 import { getKanbanStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-// Todo : kanban-header의 + 버튼 클릭을 main-kanban 컴포넌트에서 인지하고 main-card 를 추가해주어야 함.
-// 즉 상위 컴포넌트에서 상태관리가 되어야 함.
 export default class MainKanban extends Core {
   constructor() {
     super()
@@ -11,6 +9,9 @@ export default class MainKanban extends Core {
     this.$state = {
       cards: [],
       isAddOpen: false,
+      isUpdateOpen: false,
+      note: '',
+      selectedCard: null,
     }
 
     this.render()
@@ -41,8 +42,6 @@ export default class MainKanban extends Core {
   }
 
   getTemplate() {
-    const { cards, isAddOpen } = this.$state
-
     return `
       ${getKanbanStyle()}
       <section id="kanban">
@@ -50,41 +49,162 @@ export default class MainKanban extends Core {
           <div slot="counter" class="counter">0</div>
           <span slot="step" class="step"></span>
           <button slot="add-button" class="add-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
           </button>
-          <button slot="cancel-button" class="cancel-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z"/></svg>
+          <button slot="kanban-delete-button" class="kanban-delete-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z"/></svg>
           </button>
         </kanban-header>
+        <kanban-note class="add-note">
+          <textarea slot="note" class="note add" placeholder="Enter a note"></textarea>
+          <button slot="note-button" class="note-button add" disabled>Add</button>
+          <button slot="note-button" class="note-button-on add">Add</button>
+          <button slot="note-cancel-button" class="note-cancel-button add">Cancel</button>
+        </kanban-note>
+        <kanban-note class="update-note">
+          <textarea slot="note" class="note update" placeholder="Enter a note"></textarea>
+          <button slot="note-button" class="note-button update" disabled>Update</button>
+          <button slot="note-button" class="note-button-on update">Update</button>
+          <button slot="note-cancel-button" class="note-cancel-button update">Cancel</button>
+        </kanban-note>
+        <ul class="card-wrapper"></ul>
       </section>
     `
   }
 
-  toggleAddInput(isOpen) {
-    if (isOpen) {
-      this.$('add-textarea').remove()
-    } else {
-      let textarea = document.createElement('add-textarea')
-      this.$('#kanban').append(textarea)
-    }
+  handleNoteButton(isAble, type) {
+    if (type !== 'add' && type !== 'update') return
+    this.$(`.note-button.${type}`).style.display = isAble ? 'none' : 'block'
+    this.$(`.note-button-on.${type}`).style.display = isAble ? 'block' : 'none'
   }
 
-  handleAddButton(event) {
+  handleNote(event) {
+    const { className } = event.target
+    const kindOfNote = className === 'note add' ? 'add' : 'update'
+
+    this.setState({ note: event.target.value })
+    this.$(`.note.${kindOfNote}`).value = this.$state.note
+
+    const isAble = this.$state.note.length > 0
+    this.handleNoteButton(isAble, kindOfNote)
+  }
+
+  toggleNote(event) {
     const { isAddOpen } = this.$state
     this.setState({ isAddOpen: !isAddOpen })
-    this.toggleAddInput(isAddOpen)
+    if (!isAddOpen) return (this.$(`.add-note`).style.display = 'block')
+    return (this.$(`.add-note`).style.display = 'none')
   }
 
-  handleCancelButton(event) {
-    console.log(event)
+  toggleUpdateNote() {
+    this.handleNoteButton(true, 'update')
+    const { isUpdateOpen } = this.$state
+    this.setState({ isUpdateOpen: !isUpdateOpen })
+    if (!isUpdateOpen) return (this.$('.update-note').style.display = 'block')
+    this.$('.update-note').style.display = 'none'
+    return
   }
+
+  deleteKanban(event) {
+    // 구현 미정
+  }
+
+  resetNote() {
+    this.setState({ note: '' })
+    this.$('.note.add').value = this.$state.note
+    this.$('.note.update').value = this.$state.note
+  }
+
+  addCard(event) {
+    const card = document.createElement('main-card')
+    card.innerHTML = `
+      <li slot="card" id="card" class="card">
+        <div class="drag-content-wrapper">
+          <drag-button-svg class="drag-button"></drag-button-svg>
+          <div class="card-content">
+            ${this.$state.note}
+          </div>
+        </div>
+        <delete-button-svg class="delete-button" w="10" h="10"></delete-button-svg>
+      </li>
+    `
+    this.$('.card-wrapper').prepend(card)
+    this.resetNote()
+    this.handleNote(event)
+    this.toggleNote(event)
+  }
+
+  updateCard(event) {
+    this.$('.card.selected').querySelector('.card-content').innerText = this.$state.note
+    this.$('.card.selected').className = 'card'
+    this.toggleUpdateNote()
+    this.resetNote()
+  }
+
+  handleUpdateCard(event, className) {
+    const isCard = className === 'card'
+    const node = event.target
+    let content = null
+
+    if (isCard) {
+      content = node.querySelector('.card-content').innerText
+      if (node.className.includes('selected')) {
+        node.className = 'card'
+      } else {
+        node.className += ' selected'
+      }
+    } else {
+      content = node.innerText
+      if (node.parentElement.parentElement.className.includes('selected')) {
+        node.parentElement.parentElement.className = 'card'
+      } else {
+        node.parentElement.parentElement.className += ' selected'
+      }
+    }
+
+    this.setState({ note: content, selectedCard: event.target })
+    this.$('.note.update').value = this.$state.note
+    this.toggleUpdateNote()
+  }
+
+  deleteCard(event) {
+    const card = event.target.parentElement
+    if (card.className === 'card') card?.remove()
+  }
+
+  moveCard(event) {}
 
   connectedCallback() {
     this.$('.add-button').addEventListener('click', (event) => {
-      this.handleAddButton(event)
+      this.toggleNote(event)
     })
-    this.$('.cancel-button').addEventListener('click', (event) => {
-      console.log('event', event.target)
+    this.$('.kanban-delete-button').addEventListener('click', (event) => {
+      this.deleteKanban(event)
+    })
+    this.$('.add-note').addEventListener('input', (event) => {
+      this.handleNote(event)
+    })
+    this.$('.update-note').addEventListener('input', (event) => {
+      this.handleNote(event)
+    })
+    this.$('.note-button-on.add').addEventListener('click', (event) => {
+      this.addCard(event)
+    })
+    this.$('.note-button-on.update').addEventListener('click', (event) => {
+      this.updateCard(event)
+    })
+    this.$('.note-cancel-button.add').addEventListener('click', (event) => {
+      this.toggleNote(event)
+    })
+    this.$('.note-cancel-button.update').addEventListener('click', (event) => {
+      return this.toggleUpdateNote(event)
+    })
+    this.$('.card-wrapper').addEventListener('click', (event) => {
+      const { className } = event.target
+      if (className === 'delete-button') return this.deleteCard(event)
+      if (className === 'drag-button') return this.moveCard(event)
+      if (className === 'card' || className === 'card selected' || className === 'card-content')
+        return this.handleUpdateCard(event, className)
     })
   }
 

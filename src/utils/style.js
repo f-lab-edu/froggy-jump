@@ -61,18 +61,79 @@ export const getKanbanStyle = () => {
     .add-button:hover svg {
       fill: black;
     }
-    .cancel-button {
+    .kanban-delete-button {
       width: 15px;
       height: 15px;
     }
-    .cancel-button svg {
+    .kanban-delete-button svg {
       -webkit-transition: all 0.1s; /* Safari */
       transition: all 0.1s;
       fill: var(--gray);
     }
-    .cancel-button:hover svg {
+    .kanban-delete-button:hover svg {
       fill: black;
     }
+    .add-note,
+    .update-note {
+      display: none;
+    }
+    .note {
+      padding: 10px;
+      width: 100%;
+      height: 100px;
+      border: 1px solid var(--green);
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .note-button,
+    .note-button-on,
+    .note-cancel-button {
+      width: 100%;
+      border-radius: var(--default-radius);
+      padding: 5px 0;
+      font-size: var(--font-size-small);
+    }
+    .note-button {
+      background: var(--green-off);
+      color: var(--black-off);
+    }
+    .note-button-on{
+      display: none;
+      background: var(--green);
+    }
+    .note-cancel-button {
+      background: white;
+    }
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .card {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background: white;
+      border-radius: var(--default-radius);
+      font-size: var(--font-size-small);
+    }
+    .card.selected {
+      background-color: var(--green);
+    }
+    .drag-content-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+    .card-drag-button {
+      width: 15px;
+      height: 15px;
+    }
+    .card-delete-button {
+      width: 10px;
+      height: 10px;
+    }
+    .card-content {}
     button {
       background: none;
       color: inherit;
@@ -81,6 +142,9 @@ export const getKanbanStyle = () => {
       font: inherit;
       cursor: pointer;
       outline: inherit;
+    }
+    ul {
+      padding: 0;
     }
   </style>
   `
@@ -114,25 +178,11 @@ export const getAddTextareaStyle = () => {
       margin: 10px 0;
       width: 100%;
     }
-    .textarea {
-      padding: 10px;
-      width: 100%;
-      height: 100px;
-      border: 1px solid var(--green);
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
     .button-wrapper {
       display: flex;
       justify-content: space-between;
       gap: 10px;
       padding: 5px 0;
-    }
-    .add-button {
-      background: var(--deep-green);
-    }
-    .cancel-button {
-      background: white;
     }
     button {
       width: 100%;
@@ -153,11 +203,22 @@ export const getAddTextareaStyle = () => {
 export const getCardStyle = () => {
   return `
   <style>
-    #card {
-      padding: 10px;
-      background: white;
-      border-radius: var(--default-radius);
-    }
+  </style>
+  `
+}
+
+export const getDefaultButton = () => {
+  return `
+  <style>
+  button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
   </style>
   `
 }
