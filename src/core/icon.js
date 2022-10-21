@@ -1,5 +1,5 @@
 import Core from 'core/core'
-import { getDefaultButton, getHoverIcon } from 'utils/style'
+import { getResetStyle, getHoverIcon } from 'utils/style'
 
 export default class Icon extends Core {
   constructor() {
@@ -28,7 +28,7 @@ export default class Icon extends Core {
 
   getTemplate() {
     return `
-      ${getDefaultButton()}
+      ${getResetStyle()}
       ${this.isHover ? getHoverIcon() : ''}
       <button style="width:${this.w / 16}rem; height:${this.h / 16}px;">
         ${this.getIcon()}

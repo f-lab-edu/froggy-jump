@@ -46,7 +46,7 @@ export default class MainKanban extends Core {
       ${getKanbanStyle()}
       <section class="kanban">
         <kanban-header>
-          <div slot="counter" class="counter">0</div>
+          <span slot="counter" class="counter">0</span>
           <span slot="step" class="step"></span>
           <add-icon slot="add-button" class="add-button" w="15" h="15" hover="true"></add-icon>
           <ellipsis-icon slot="kanban-delete-button" class="kanban-delete-button" w="15" h="15" hover="true"></ellipsis-icon>

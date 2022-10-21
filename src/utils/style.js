@@ -1,5 +1,6 @@
 export const getHeaderStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
     .header {
       display: flex;
@@ -16,6 +17,7 @@ export const getHeaderStyle = () => {
 
 export const getBoardStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
     .board {
       display: grid;
@@ -29,6 +31,7 @@ export const getBoardStyle = () => {
 
 export const getKanbanStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
     .kanban {
       padding: 1.25rem;
@@ -37,14 +40,15 @@ export const getKanbanStyle = () => {
       border-radius: var(--default-radius);
     }
     .counter {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: var(--gray);
       padding: 0.125rem;
       border-radius: 50%;
       width: 0.9375rem;
       height: 0.9375rem;
       font-size: var(--font-size-small);
-      text-align: center;
     }
     .step {
       font-size: var(--font-size-small);
@@ -110,24 +114,13 @@ export const getKanbanStyle = () => {
       height: 0.625rem;
     }
     .card-content {}
-    button {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-    }
-    ul {
-      padding: 0;
-    }
   </style>
   `
 }
 
 export const getKanbanHeaderStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
     .kanban-header {
       display: flex;
@@ -149,6 +142,7 @@ export const getKanbanHeaderStyle = () => {
 
 export const getAddTextareaStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
     .add-textarea {
       margin: 0.625rem 0;
@@ -160,47 +154,21 @@ export const getAddTextareaStyle = () => {
       gap: 0.625rem;
       padding: 0.3125rem 0;
     }
-    button {
-      width: 100%;
-      background: none;
-      color: inherit;
-      border: none;
-      border-radius: var(--default-radius);
-      padding: 0.3125rem 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      font-size: var(--font-size-small);
-    }
   </style>
   `
 }
 
 export const getCardStyle = () => {
   return `
+  ${getResetStyle()}
   <style>
-  </style>
-  `
-}
-
-export const getDefaultButton = () => {
-  return `
-  <style>
-  button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-  }
   </style>
   `
 }
 
 export const getHoverIcon = () => {
   return `
+  ${getResetStyle()}
   <style>
   svg {
     -webkit-transition: all 0.1s; /* Safari */
@@ -210,6 +178,149 @@ export const getHoverIcon = () => {
   svg:hover {
     fill: black;
   }
+  </style>
+  `
+}
+
+export const getResetStyle = () => {
+  return `
+  <style>
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+    body {
+      line-height: 1;
+    }
+    ol,
+    ul {
+      list-style: none;
+    }
+    blockquote,
+    q {
+      quotes: none;
+    }
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    
+    button,
+    input[type='submit'],
+    input[type='reset'] {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
   </style>
   `
 }
