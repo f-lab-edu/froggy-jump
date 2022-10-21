@@ -30,7 +30,7 @@ export default class Icon extends Core {
     return `
       ${getDefaultButton()}
       ${this.isHover ? getHoverIcon() : ''}
-      <button style="width:${this.w}px; height:${this.h}px;">
+      <button style="width:${this.w / 16}rem; height:${this.h / 16}px;">
         ${this.getIcon()}
       </button>
     `

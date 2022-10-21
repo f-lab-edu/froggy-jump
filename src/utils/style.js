@@ -1,14 +1,14 @@
 export const getHeaderStyle = () => {
   return `
   <style>
-    #header {
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 50px;
+      padding: 0 3.125rem;
       background: var(--green);
       height: 60px;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
   </style>
   `
@@ -20,8 +20,8 @@ export const getBoardStyle = () => {
     .board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
+      gap: 1.25rem;
+      padding: 1.25rem;
     }
   </style>
   `
@@ -31,7 +31,7 @@ export const getKanbanStyle = () => {
   return `
   <style>
     .kanban {
-      padding: 20px;
+      padding: 1.25rem;
       background: var(--board-gray);
       height: 600px;
       border-radius: var(--default-radius);
@@ -39,10 +39,10 @@ export const getKanbanStyle = () => {
     .counter {
       display: inline-block;
       background: var(--gray);
-      padding: 2px;
+      padding: 0.125rem;
       border-radius: 50%;
-      width: 15px;
-      height: 15px;
+      width: 0.9375rem;
+      height: 0.9375rem;
       font-size: var(--font-size-small);
       text-align: center;
     }
@@ -54,7 +54,7 @@ export const getKanbanStyle = () => {
       display: none;
     }
     .note {
-      padding: 10px;
+      padding: 0.625rem;
       width: 100%;
       height: 100px;
       border: 1px solid var(--green);
@@ -66,7 +66,7 @@ export const getKanbanStyle = () => {
     .note-cancel-button {
       width: 100%;
       border-radius: var(--default-radius);
-      padding: 5px 0;
+      padding: 0.3125rem 0;
       font-size: var(--font-size-small);
     }
     .note-button {
@@ -83,13 +83,13 @@ export const getKanbanStyle = () => {
     .card-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin: 10px 0;
+      gap: 0.625rem;
+      margin: 0.625rem 0;
     }
     .card {
       display: flex;
       justify-content: space-between;
-      padding: 10px;
+      padding: 0.625rem;
       background: white;
       border-radius: var(--default-radius);
       font-size: var(--font-size-small);
@@ -99,15 +99,15 @@ export const getKanbanStyle = () => {
     }
     .drag-content-wrapper {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
     }
     .card-drag-button {
-      width: 15px;
-      height: 15px;
+      width: 0.9375rem;
+      height: 0.9375rem;
     }
     .card-delete-button {
-      width: 10px;
-      height: 10px;
+      width: 0.625rem;
+      height: 0.625rem;
     }
     .card-content {}
     button {
@@ -129,19 +129,19 @@ export const getKanbanStyle = () => {
 export const getKanbanHeaderStyle = () => {
   return `
   <style>
-    #kanban-header {
+    .kanban-header {
       display: flex;
       justify-content: space-between;
-      padding: 10px 5px;
+      padding: 0.625rem 0.3125rem;
     }
     .step-wrapper {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       align-items: center;
     }
     .button-wrapper {
       display: flex;
-      gap: 5px;
+      gap: 0.3125rem;
     }
   </style>
   `
@@ -150,15 +150,15 @@ export const getKanbanHeaderStyle = () => {
 export const getAddTextareaStyle = () => {
   return `
   <style>
-    #add-textarea {
-      margin: 10px 0;
+    .add-textarea {
+      margin: 0.625rem 0;
       width: 100%;
     }
     .button-wrapper {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      padding: 5px 0;
+      gap: 0.625rem;
+      padding: 0.3125rem 0;
     }
     button {
       width: 100%;
@@ -166,7 +166,7 @@ export const getAddTextareaStyle = () => {
       color: inherit;
       border: none;
       border-radius: var(--default-radius);
-      padding: 5px 0;
+      padding: 0.3125rem 0;
       font: inherit;
       cursor: pointer;
       outline: inherit;
