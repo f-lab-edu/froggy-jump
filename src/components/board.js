@@ -1,7 +1,8 @@
+import Core from 'core/core.js'
 import { getBoardStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class MainBoard extends HTMLElement {
+export default class MainBoard extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -12,16 +13,15 @@ export default class MainBoard extends HTMLElement {
     return `
       ${getBoardStyle()}
       <main id="board">
-        <main-kanban></main-kanban>
-        <main-kanban></main-kanban>
-        <main-kanban></main-kanban>
+        <main-kanban title="backLog"></main-kanban>
+        <main-kanban title="inProgress"></main-kanban>
+        <main-kanban title="done"></main-kanban>
       </main>
     `
   }
 
   render() {
-    const self = this
-    createTemplate(self, this.getTemplate())
+    createTemplate(this)
   }
 }
 

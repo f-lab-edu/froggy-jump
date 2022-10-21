@@ -1,7 +1,8 @@
+import Core from 'core/core.js'
 import { getHeaderStyle } from 'utils/style'
 import { createTemplate } from 'utils/template'
 
-export default class MainHeader extends HTMLElement {
+export default class MainHeader extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -19,8 +20,7 @@ export default class MainHeader extends HTMLElement {
   }
 
   render() {
-    const self = this
-    createTemplate(self, this.getTemplate())
+    createTemplate(this)
   }
 }
 

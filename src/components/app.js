@@ -1,6 +1,7 @@
+import Core from 'core/core.js'
 import { createTemplate } from 'utils/template'
 
-export default class MainApp extends HTMLElement {
+export default class MainApp extends Core {
   constructor() {
     super()
     this.attachShadow({ mode: 'open' })
@@ -15,8 +16,7 @@ export default class MainApp extends HTMLElement {
   }
 
   render() {
-    const self = this
-    createTemplate(self, this.getTemplate())
+    createTemplate(this)
   }
 }
 

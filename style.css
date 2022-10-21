@@ -1,7 +1,13 @@
 :root {
   --green: #dfff00;
+  --green-off: #dfff004d;
+  --black-off: #0000004d;
+  --white-off: #ffffffb3;
+  --deep-green: #00ff00;
   --board-gray: #e9ecf3;
+  --gray: #c4c4c4;
   --default-radius: 5px;
+  --font-size-small: 14px;
 }
 
 *,
@@ -10,4 +16,16 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+}
+
+button,
+input[type='submit'],
+input[type='reset'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
