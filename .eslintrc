@@ -7,10 +7,19 @@
   "env": {
     "browser": true
   },
-  "extends": ["plugin:prettier/recommended"],
-  "plugins": ["simple-import-sort"],
+  "extends": ["eslint:recommended"],
+  "plugins": ["import"],
   "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", ["parent", "sibling"], "index"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ]
   }
 }

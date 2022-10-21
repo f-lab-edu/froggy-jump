@@ -85,7 +85,7 @@ export default class MainKanban extends Core {
     this.handleNoteButton(isAble, kindOfNote)
   }
 
-  toggleNote(event) {
+  toggleNote() {
     const { isAddOpen } = this.$state
     this.setState({ isAddOpen: !isAddOpen })
     if (!isAddOpen) return (this.$(`.add-note`).style.display = 'block')
@@ -101,7 +101,7 @@ export default class MainKanban extends Core {
     return
   }
 
-  deleteKanban(event) {
+  deleteKanban() {
     // 구현 미정
   }
 
@@ -130,7 +130,7 @@ export default class MainKanban extends Core {
     this.toggleNote(event)
   }
 
-  updateCard(event) {
+  updateCard() {
     this.$('.card.selected').querySelector('.card-content').innerText = this.$state.note
     this.$('.card.selected').className = 'card'
     this.toggleUpdateNote()
@@ -168,7 +168,7 @@ export default class MainKanban extends Core {
     if (card.className === 'card') card?.remove()
   }
 
-  moveCard(event) {}
+  moveCard() {}
 
   connectedCallback() {
     this.$('.add-button').addEventListener('click', (event) => {

@@ -1,6 +1,6 @@
 import '@/style.css'
 
-import components from 'components/components.js'
+import 'components/components.js'
 class App {
   constructor($target) {
     this.$target = $target
