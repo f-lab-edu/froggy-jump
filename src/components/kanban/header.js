@@ -12,7 +12,7 @@ export default class KanbanHeader extends Core {
   getTemplate() {
     return `
       ${getKanbanHeaderStyle()}
-      <div id="kanban-header">
+      <div class="kanban-header">
         <div class="step-wrapper">
           <slot name="counter"></slot>
           <slot name="step"></slot>

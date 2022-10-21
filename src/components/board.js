@@ -12,7 +12,7 @@ export default class MainBoard extends Core {
   getTemplate() {
     return `
       ${getBoardStyle()}
-      <main id="board">
+      <main class="board">
         <main-kanban title="backLog"></main-kanban>
         <main-kanban title="inProgress"></main-kanban>
         <main-kanban title="done"></main-kanban>

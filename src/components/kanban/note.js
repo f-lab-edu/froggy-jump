@@ -12,7 +12,7 @@ export default class KanbanNote extends Core {
   getTemplate() {
     return `
       ${getAddTextareaStyle()}
-      <section id="add-textarea">
+      <section class="add-textarea">
         <slot name="note"></slot>
         <div class="button-wrapper">
           <slot name="note-button"></slot>

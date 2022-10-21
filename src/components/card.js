@@ -12,7 +12,7 @@ export default class MainCard extends Core {
   getTemplate() {
     return `
       ${getCardStyle()}
-      <slot name="card" id="card"></slot>
+      <slot name="card" class="card"></slot>
     `
   }
 

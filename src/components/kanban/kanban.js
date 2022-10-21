@@ -44,7 +44,7 @@ export default class MainKanban extends Core {
   getTemplate() {
     return `
       ${getKanbanStyle()}
-      <section id="kanban">
+      <section class="kanban">
         <kanban-header>
           <div slot="counter" class="counter">0</div>
           <span slot="step" class="step"></span>
@@ -114,7 +114,7 @@ export default class MainKanban extends Core {
   addCard(event) {
     const card = document.createElement('main-card')
     card.innerHTML = `
-      <li slot="card" id="card" class="card">
+      <li slot="card" class="card">
         <div class="drag-content-wrapper">
           <drag-icon class="drag-button" w="15" h="15"></drag-icon>
           <div class="card-content">

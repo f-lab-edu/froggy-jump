@@ -17,7 +17,7 @@ export const getHeaderStyle = () => {
 export const getBoardStyle = () => {
   return `
   <style>
-    #board {
+    .board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -30,7 +30,7 @@ export const getBoardStyle = () => {
 export const getKanbanStyle = () => {
   return `
   <style>
-    #kanban {
+    .kanban {
       padding: 20px;
       background: var(--board-gray);
       height: 600px;

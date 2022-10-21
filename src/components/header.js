@@ -12,7 +12,7 @@ export default class MainHeader extends Core {
   getTemplate() {
     return `
     ${getHeaderStyle()}
-    <header id="header">
+    <header class="header">
       <div class="header-logo">Froggy Jump</div>
       <div class="header-menu">Menu</div>
     </header>
