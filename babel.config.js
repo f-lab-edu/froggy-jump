@@ -15,7 +15,7 @@ module.exports = function (api) {
         useBuiltIns: 'usage', // "entry" 전부 추가
         corejs: 3,
         /** ES6 module syntax 사용 여부 */
-        modules: true,
+        // modules: true,
       },
     ],
   ]
@@ -27,6 +27,7 @@ module.exports = function (api) {
         root: ['./src'],
         alias: {
           imgs: './public/images',
+          '@': './',
         },
       },
     ],

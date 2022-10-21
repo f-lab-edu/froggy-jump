@@ -4,10 +4,10 @@ const { merge } = require('webpack-merge')
 
 module.exports = merge(commonConfig, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'eval',
   devServer: {
     static: {
-      directory: path.resolve(__dirname, './public'),
+      directory: path.join(__dirname, 'public'),
     },
     port: 9000,
     hot: true,
