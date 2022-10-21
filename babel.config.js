@@ -1,9 +1,9 @@
-module.exports = function (api) {
+module.exports = (api) => {
   /**
   babel 설정 파일을 한번만 실행하겠다는 뜻
   https://babeljs.io/docs/en/config-files#apicache
   */
-  api.cache(true)
+  api.cache(true);
 
   const presets = [
     [
@@ -15,10 +15,10 @@ module.exports = function (api) {
         useBuiltIns: 'usage', // "entry" 전부 추가
         corejs: 3,
         /** ES6 module syntax 사용 여부 */
-        // modules: true,
+        modules: true,
       },
     ],
-  ]
+  ];
 
   const plugins = [
     [
@@ -31,10 +31,10 @@ module.exports = function (api) {
         },
       },
     ],
-  ]
+  ];
 
   return {
     presets,
     plugins,
-  }
-}
+  };
+};

@@ -1,84 +1,200 @@
-export const getHeaderStyle = () => {
-  return `
+export const getResetStyle = () => `
   <style>
-    #header {
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+    }
+    
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+    body {
+      line-height: 1;
+    }
+    ol,
+    ul {
+      list-style: none;
+    }
+    blockquote,
+    q {
+      quotes: none;
+    }
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    
+    button,
+    input[type='submit'],
+    input[type='reset'] {
+      background: none;
+      color: inherit;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+    }
+  </style>
+  `;
+
+export const getHeaderStyle = () => `
+  ${getResetStyle()}
+  <style>
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 50px;
+      padding: 0 3.125rem;
       background: var(--green);
       height: 60px;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
   </style>
-  `
-}
+  `;
 
-export const getBoardStyle = () => {
-  return `
+export const getBoardStyle = () => `
+  ${getResetStyle()}
   <style>
-    #board {
+    .board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
+      gap: 1.25rem;
+      padding: 1.25rem;
     }
   </style>
-  `
-}
+  `;
 
-export const getKanbanStyle = () => {
-  return `
+export const getKanbanStyle = () => `
+  ${getResetStyle()}
   <style>
-    #kanban {
-      padding: 20px;
+    .kanban {
+      padding: 1.25rem;
       background: var(--board-gray);
       height: 600px;
       border-radius: var(--default-radius);
     }
     .counter {
-      display: inline-block;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: var(--gray);
-      padding: 2px;
+      padding: 0.125rem;
       border-radius: 50%;
-      width: 15px;
-      height: 15px;
+      width: 0.9375rem;
+      height: 0.9375rem;
       font-size: var(--font-size-small);
-      text-align: center;
     }
     .step {
       font-size: var(--font-size-small);
-    }
-    .add-button {
-      width: 15px;
-      height: 15px;
-    }
-    .add-button svg {
-      -webkit-transition: all 0.1s; /* Safari */
-      transition: all 0.1s;
-      fill: var(--gray);
-    }
-    .add-button:hover svg {
-      fill: black;
-    }
-    .kanban-delete-button {
-      width: 15px;
-      height: 15px;
-    }
-    .kanban-delete-button svg {
-      -webkit-transition: all 0.1s; /* Safari */
-      transition: all 0.1s;
-      fill: var(--gray);
-    }
-    .kanban-delete-button:hover svg {
-      fill: black;
     }
     .add-note,
     .update-note {
       display: none;
     }
     .note {
-      padding: 10px;
+      padding: 0.625rem;
       width: 100%;
       height: 100px;
       border: 1px solid var(--green);
@@ -90,7 +206,7 @@ export const getKanbanStyle = () => {
     .note-cancel-button {
       width: 100%;
       border-radius: var(--default-radius);
-      padding: 5px 0;
+      padding: 0.3125rem 0;
       font-size: var(--font-size-small);
     }
     .note-button {
@@ -107,13 +223,13 @@ export const getKanbanStyle = () => {
     .card-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      margin: 10px 0;
+      gap: 0.625rem;
+      margin: 0.625rem 0;
     }
     .card {
       display: flex;
       justify-content: space-between;
-      padding: 10px;
+      padding: 0.625rem;
       background: white;
       border-radius: var(--default-radius);
       font-size: var(--font-size-small);
@@ -123,102 +239,72 @@ export const getKanbanStyle = () => {
     }
     .drag-content-wrapper {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
     }
     .card-drag-button {
-      width: 15px;
-      height: 15px;
+      width: 0.9375rem;
+      height: 0.9375rem;
     }
     .card-delete-button {
-      width: 10px;
-      height: 10px;
+      width: 0.625rem;
+      height: 0.625rem;
     }
     .card-content {}
-    button {
-      background: none;
-      color: inherit;
-      border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-    }
-    ul {
-      padding: 0;
-    }
   </style>
-  `
-}
+  `;
 
-export const getKanbanHeaderStyle = () => {
-  return `
+export const getKanbanHeaderStyle = () => `
+  ${getResetStyle()}
   <style>
-    #kanban-header {
+    .kanban-header {
       display: flex;
       justify-content: space-between;
-      padding: 10px 5px;
+      padding: 0.625rem 0.3125rem;
     }
     .step-wrapper {
       display: flex;
-      gap: 10px;
+      gap: 0.625rem;
       align-items: center;
     }
     .button-wrapper {
       display: flex;
-      gap: 5px;
+      gap: 0.3125rem;
     }
   </style>
-  `
-}
+  `;
 
-export const getAddTextareaStyle = () => {
-  return `
+export const getAddTextareaStyle = () => `
+  ${getResetStyle()}
   <style>
-    #add-textarea {
-      margin: 10px 0;
+    .add-textarea {
+      margin: 0.625rem 0;
       width: 100%;
     }
     .button-wrapper {
       display: flex;
       justify-content: space-between;
-      gap: 10px;
-      padding: 5px 0;
-    }
-    button {
-      width: 100%;
-      background: none;
-      color: inherit;
-      border: none;
-      border-radius: var(--default-radius);
-      padding: 5px 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      font-size: var(--font-size-small);
+      gap: 0.625rem;
+      padding: 0.3125rem 0;
     }
   </style>
-  `
-}
+  `;
 
-export const getCardStyle = () => {
-  return `
+export const getCardStyle = () => `
+  ${getResetStyle()}
   <style>
   </style>
-  `
-}
+  `;
 
-export const getDefaultButton = () => {
-  return `
+export const getHoverIcon = () => `
+  ${getResetStyle()}
   <style>
-  button {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+  svg {
+    -webkit-transition: all 0.1s; /* Safari */
+    transition: all 0.1s;
+    fill: var(--gray);
+  }
+  svg:hover {
+    fill: black;
   }
   </style>
-  `
-}
+  `;

@@ -1,18 +1,14 @@
-import Core from 'core/core.js'
-import { getKanbanHeaderStyle } from 'utils/style'
-import { createTemplate } from 'utils/template'
+import Core from 'core/core';
+import { getKanbanHeaderStyle } from 'utils/style';
+import { createTemplate } from 'utils/template';
 
 export default class KanbanHeader extends Core {
   constructor() {
-    super()
-    this.attachShadow({ mode: 'open' })
-    this.render()
-  }
-
-  getTemplate() {
-    return `
-      ${getKanbanHeaderStyle()}
-      <div id="kanban-header">
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.template = `
+    ${getKanbanHeaderStyle()}
+      <div class="kanban-header">
         <div class="step-wrapper">
           <slot name="counter"></slot>
           <slot name="step"></slot>
@@ -22,14 +18,17 @@ export default class KanbanHeader extends Core {
           <slot name="kanban-delete-button"></slot>
         </div>
       </div>
-    `
+    `;
+    this.render();
   }
 
-  connectedCallback() {}
+  getTemplate() {
+    return this.template;
+  }
 
   render() {
-    createTemplate(this)
+    createTemplate(this);
   }
 }
 
-customElements.define('kanban-header', KanbanHeader)
+customElements.define('kanban-header', KanbanHeader);

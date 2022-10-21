@@ -1,32 +1,31 @@
-import Core from 'core/core.js'
-import { getAddTextareaStyle } from 'utils/style'
-import { createTemplate } from 'utils/template'
+import Core from 'core/core';
+import { getAddTextareaStyle } from 'utils/style';
+import { createTemplate } from 'utils/template';
 
 export default class KanbanNote extends Core {
   constructor() {
-    super()
-    this.attachShadow({ mode: 'open' })
-    this.render()
-  }
-
-  getTemplate() {
-    return `
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.template = `
       ${getAddTextareaStyle()}
-      <section id="add-textarea">
+      <section class="add-textarea">
         <slot name="note"></slot>
         <div class="button-wrapper">
           <slot name="note-button"></slot>
           <slot name="note-cancel-button"></slot>
         </div>
       </section>
-    `
+    `;
+    this.render();
   }
 
-  connectedCallback() {}
+  getTemplate() {
+    return this.template;
+  }
 
   render() {
-    createTemplate(this)
+    createTemplate(this);
   }
 }
 
-customElements.define('kanban-note', KanbanNote)
+customElements.define('kanban-note', KanbanNote);

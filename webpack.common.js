@@ -1,7 +1,8 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const path = require('path')
+const path = require('path');
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: './src/index.js',
@@ -47,6 +48,6 @@ const config = {
     }),
     new CleanWebpackPlugin({ filename: 'bundle.js' }),
   ],
-}
+};
 
-module.exports = config
+module.exports = config;
