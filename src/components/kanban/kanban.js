@@ -48,12 +48,8 @@ export default class MainKanban extends Core {
         <kanban-header>
           <div slot="counter" class="counter">0</div>
           <span slot="step" class="step"></span>
-          <button slot="add-button" class="add-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-          </button>
-          <button slot="kanban-delete-button" class="kanban-delete-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M120 256c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm160 0c0 30.9-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56zm104 56c-30.9 0-56-25.1-56-56s25.1-56 56-56s56 25.1 56 56s-25.1 56-56 56z"/></svg>
-          </button>
+          <add-icon slot="add-button" class="add-button" w="15" h="15" hover="true"></add-icon>
+          <ellipsis-icon slot="kanban-delete-button" class="kanban-delete-button" w="15" h="15" hover="true"></ellipsis-icon>
         </kanban-header>
         <kanban-note class="add-note">
           <textarea slot="note" class="note add" placeholder="Enter a note"></textarea>
@@ -120,12 +116,12 @@ export default class MainKanban extends Core {
     card.innerHTML = `
       <li slot="card" id="card" class="card">
         <div class="drag-content-wrapper">
-          <drag-button-svg class="drag-button"></drag-button-svg>
+          <drag-icon class="drag-button" w="15" h="15"></drag-icon>
           <div class="card-content">
             ${this.$state.note}
           </div>
         </div>
-        <delete-button-svg class="delete-button" w="10" h="10"></delete-button-svg>
+        <delete-icon class="delete-button" w="10" h="10"></delete-icon>
       </li>
     `
     this.$('.card-wrapper').prepend(card)

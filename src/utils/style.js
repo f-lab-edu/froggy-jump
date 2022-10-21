@@ -49,30 +49,6 @@ export const getKanbanStyle = () => {
     .step {
       font-size: var(--font-size-small);
     }
-    .add-button {
-      width: 15px;
-      height: 15px;
-    }
-    .add-button svg {
-      -webkit-transition: all 0.1s; /* Safari */
-      transition: all 0.1s;
-      fill: var(--gray);
-    }
-    .add-button:hover svg {
-      fill: black;
-    }
-    .kanban-delete-button {
-      width: 15px;
-      height: 15px;
-    }
-    .kanban-delete-button svg {
-      -webkit-transition: all 0.1s; /* Safari */
-      transition: all 0.1s;
-      fill: var(--gray);
-    }
-    .kanban-delete-button:hover svg {
-      fill: black;
-    }
     .add-note,
     .update-note {
       display: none;
@@ -218,6 +194,21 @@ export const getDefaultButton = () => {
     font: inherit;
     cursor: pointer;
     outline: inherit;
+  }
+  </style>
+  `
+}
+
+export const getHoverIcon = () => {
+  return `
+  <style>
+  svg {
+    -webkit-transition: all 0.1s; /* Safari */
+    transition: all 0.1s;
+    fill: var(--gray);
+  }
+  svg:hover {
+    fill: black;
   }
   </style>
   `
