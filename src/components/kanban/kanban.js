@@ -124,7 +124,7 @@ export default class MainKanban extends Core {
   addCard(event) {
     const card = document.createElement('main-card');
     card.innerHTML = `
-      <li slot="card" class="card">
+      <li slot="card" class="card" draggable="true">
         <div class="drag-content-wrapper">
           <drag-icon class="drag-button" w="15" h="15"></drag-icon>
           <div class="card-content">
