@@ -17,5 +17,5 @@ class App {
   }
 }
 
-const app = new App(document.querySelector('#app'));
-app();
+// eslint-disable-next-line no-new
+new App(document.querySelector('#app'));

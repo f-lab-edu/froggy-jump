@@ -241,15 +241,9 @@ export const getKanbanStyle = () => `
       display: flex;
       gap: 0.625rem;
     }
-    .card-drag-button {
-      width: 0.9375rem;
-      height: 0.9375rem;
+    .drag-button {
+      cursor: move;
     }
-    .card-delete-button {
-      width: 0.625rem;
-      height: 0.625rem;
-    }
-    .card-content {}
   </style>
   `;
 
