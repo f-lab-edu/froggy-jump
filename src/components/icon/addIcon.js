@@ -1,5 +1,5 @@
 import Icon from 'core/icon';
-import { createTemplate } from 'utils/template';
+import createTemplate from 'utils/template';
 
 export default class AddIcon extends Icon {
   constructor() {

@@ -237,6 +237,9 @@ export const getKanbanStyle = () => `
     .card.selected {
       background-color: var(--green);
     }
+    .card.over {
+      padding: 0.7rem;
+    }
     .drag-content-wrapper {
       display: flex;
       gap: 0.625rem;
