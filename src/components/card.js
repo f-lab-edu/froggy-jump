@@ -20,7 +20,7 @@ export default class MainCard extends Core {
 
   handleDragStart(event) {
     this.setAttribute('dragging', true);
-    event.dataTransfer.setData('text/html', this.innerHTML);
+    event.dataTransfer.setData('text/html', this);
     this.style.opacity = 0.4;
   }
 

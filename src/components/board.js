@@ -32,6 +32,9 @@ export default class MainBoard extends Core {
       if (found) {
         const theLowestShadowRoot = found.getRootNode();
         this.draggingElement = theLowestShadowRoot.querySelector('[dragging]');
+        theLowestShadowRoot.querySelector('.counter').innerText = (
+          Number(theLowestShadowRoot.querySelector('.card-wrapper').childElementCount) - 1
+        ).toString();
       }
     }
   }
@@ -40,6 +43,7 @@ export default class MainBoard extends Core {
     event.preventDefault();
     const found = event.composedPath().find((node) => node.className === 'kanban');
     found.querySelector('.card-wrapper').appendChild(this.draggingElement);
+    found.querySelector('.counter').innerText = found.querySelector('.card-wrapper').childElementCount;
     this.draggingElement = null;
   }
 
