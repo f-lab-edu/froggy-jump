@@ -35,7 +35,7 @@ export default class Icon extends Core {
   getTemplate() {
     return `
       ${getResetStyle()}
-      ${this.isHover ? getHoverIcon() : ''}
+      ${getHoverIcon()}
       <button>
         ${getIcon(this.icon, this.w, this.h)}
       </button>

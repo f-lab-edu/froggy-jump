@@ -171,10 +171,10 @@ export default class MainKanban extends Core {
   }
 
   deleteCard(event) {
-    this.setState({ selectedCard: event.target.parentElement });
+    this.setState({ selectedCard: event.target.parentElement.parentElement });
     const { selectedCard } = this.$state;
-    if (selectedCard.className === 'card') {
-      selectedCard?.remove();
+    if (selectedCard.nodeName === 'MAIN-CARD') {
+      selectedCard.remove();
       this.setState({ selectedCard: null });
     }
   }
@@ -208,10 +208,6 @@ export default class MainKanban extends Core {
         this.deleteCard(event);
         return;
       }
-      // if (className === 'drag-button') {
-      //   this.moveCard(event);
-      //   return;
-      // }
       if (className === 'card' || className === 'card selected' || className === 'card-content') {
         this.handleUpdateCard(event, className);
       }
