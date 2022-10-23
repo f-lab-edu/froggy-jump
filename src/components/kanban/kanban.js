@@ -109,6 +109,7 @@ export default class MainKanban extends Core {
       return;
     }
     this.$('.update-note').style.display = 'none';
+    this.$('.card').classList.remove('selected');
   }
 
   resetNote() {
@@ -139,30 +140,30 @@ export default class MainKanban extends Core {
 
   updateCard() {
     this.$('.card.selected').querySelector('.card-content').innerText = this.$state.note;
-    this.$('.card.selected').className = 'card';
+    this.$('.card.selected').classList.remove('selected');
     this.toggleUpdateNote();
     this.resetNote();
   }
 
-  handleUpdateCard(event, className) {
-    const isCard = className === 'card';
+  handleUpdateCard(event, name) {
+    const isCard = name === 'card';
     const node = event.target;
+
     let content = null;
 
     if (isCard) {
       content = node.querySelector('.card-content').innerText;
-      if (node.className.includes('selected')) {
-        node.className = 'card';
-      } else {
-        node.className += ' selected';
-      }
-    } else {
+      const { classList, className } = node;
+      const isSelected = className.includes('selected');
+      if (isSelected) classList.remove('selected');
+      if (!isSelected) classList.add('selected');
+    }
+    if (!isCard) {
       content = node.innerText;
-      if (node.parentElement.parentElement.className.includes('selected')) {
-        node.parentElement.parentElement.className = 'card';
-      } else {
-        node.parentElement.parentElement.className += ' selected';
-      }
+      const { className, classList } = node.parentElement.parentElement;
+      const isSelected = className.includes('selected');
+      if (isSelected) classList.remove('selected');
+      if (!isSelected) classList.add('selected');
     }
 
     this.setState({ note: content, selectedCard: event.target });
