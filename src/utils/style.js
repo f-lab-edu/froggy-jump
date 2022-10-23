@@ -180,11 +180,11 @@ export const getKanbanStyle = () => `
       justify-content: center;
       align-items: center;
       background: var(--gray);
-      padding: 0.125rem;
       border-radius: 50%;
-      width: 0.9375rem;
-      height: 0.9375rem;
+      width: 20px;
+      height: 20px;
       font-size: var(--font-size-small);
+      vertical-align: middle
     }
     .step {
       font-size: var(--font-size-small);

@@ -118,6 +118,10 @@ export default class MainKanban extends Core {
     this.$('.note.update').value = this.$state.note;
   }
 
+  updateCounter() {
+    this.$('.counter').innerText = this.$('.card-wrapper').childElementCount;
+  }
+
   addCard(event) {
     const card = document.createElement('main-card');
     card.setAttribute('draggable', 'true');
@@ -136,6 +140,7 @@ export default class MainKanban extends Core {
     this.resetNote();
     this.handleNote(event);
     this.toggleNote(event);
+    this.updateCounter();
   }
 
   updateCard() {
@@ -177,6 +182,7 @@ export default class MainKanban extends Core {
     if (selectedCard.nodeName === 'MAIN-CARD') {
       selectedCard.remove();
       this.setState({ selectedCard: null });
+      this.updateCounter();
     }
   }
 
