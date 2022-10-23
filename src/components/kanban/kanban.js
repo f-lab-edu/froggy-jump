@@ -1,6 +1,6 @@
 import Core from 'core/core';
 import { getKanbanStyle } from 'utils/style';
-import { createTemplate } from 'utils/template';
+import createTemplate from 'utils/template';
 
 export default class MainKanban extends Core {
   constructor() {
@@ -13,8 +13,8 @@ export default class MainKanban extends Core {
         <kanban-header>
           <span slot="counter" class="counter">0</span>
           <span slot="step" class="step"></span>
-          <add-icon slot="add-button" class="add-button" w="15" h="15" hover="true"></add-icon>
-          <ellipsis-icon slot="kanban-delete-button" class="kanban-delete-button" w="15" h="15" hover="true"></ellipsis-icon>
+          <svg-icon slot="add-button" class="add-button" w="15" h="15" icon="add" hover="true"></svg-icon>
+          <svg-icon slot="kanban-delete-button" class="kanban-delete-button" w="15" h="15" icon="ellipsis" hover="true"></svg-icon>
         </kanban-header>
         <kanban-note class="add-note">
           <textarea slot="note" class="note add" placeholder="Enter a note"></textarea>
@@ -43,6 +43,10 @@ export default class MainKanban extends Core {
     this.render();
   }
 
+  getTemplate() {
+    return this.template;
+  }
+
   handleStepTitle(step) {
     switch (step) {
       case 'backLog':
@@ -67,10 +71,6 @@ export default class MainKanban extends Core {
     if (name === 'title') {
       this.handleStepTitle(newValue);
     }
-  }
-
-  getTemplate() {
-    return this.template;
   }
 
   handleNoteButton(isAble, type) {
@@ -109,11 +109,8 @@ export default class MainKanban extends Core {
       return;
     }
     this.$('.update-note').style.display = 'none';
+    this.$('.card').classList.remove('selected');
   }
-
-  // deleteKanban() {
-  // 구현 미정
-  // }
 
   resetNote() {
     this.setState({ note: '' });
@@ -121,51 +118,57 @@ export default class MainKanban extends Core {
     this.$('.note.update').value = this.$state.note;
   }
 
+  updateCounter() {
+    this.$('.counter').innerText = this.$('.card-wrapper').childElementCount;
+  }
+
   addCard(event) {
     const card = document.createElement('main-card');
+    card.setAttribute('draggable', 'true');
     card.innerHTML = `
-      <li slot="card" class="card" draggable="true">
+      <li slot="card" class="card">
         <div class="drag-content-wrapper">
-          <drag-icon class="drag-button" w="15" h="15"></drag-icon>
+          <svg-icon slot="drag-button" class="drag-button" w="15" h="15" icon="drag" hover="true"></svg-icon>
           <div class="card-content">
             ${this.$state.note}
           </div>
         </div>
-        <delete-icon class="delete-button" w="10" h="10"></delete-icon>
+        <svg-icon slot="delete-button" class="delete-button" w="15" h="15" icon="delete" hover="true"></svg-icon>
       </li>
     `;
     this.$('.card-wrapper').prepend(card);
     this.resetNote();
     this.handleNote(event);
     this.toggleNote(event);
+    this.updateCounter();
   }
 
   updateCard() {
     this.$('.card.selected').querySelector('.card-content').innerText = this.$state.note;
-    this.$('.card.selected').className = 'card';
+    this.$('.card.selected').classList.remove('selected');
     this.toggleUpdateNote();
     this.resetNote();
   }
 
-  handleUpdateCard(event, className) {
-    const isCard = className === 'card';
+  handleUpdateCard(event, name) {
+    const isCard = name === 'card';
     const node = event.target;
+
     let content = null;
 
     if (isCard) {
       content = node.querySelector('.card-content').innerText;
-      if (node.className.includes('selected')) {
-        node.className = 'card';
-      } else {
-        node.className += ' selected';
-      }
-    } else {
+      const { classList, className } = node;
+      const isSelected = className.includes('selected');
+      if (isSelected) classList.remove('selected');
+      if (!isSelected) classList.add('selected');
+    }
+    if (!isCard) {
       content = node.innerText;
-      if (node.parentElement.parentElement.className.includes('selected')) {
-        node.parentElement.parentElement.className = 'card';
-      } else {
-        node.parentElement.parentElement.className += ' selected';
-      }
+      const { className, classList } = node.parentElement.parentElement;
+      const isSelected = className.includes('selected');
+      if (isSelected) classList.remove('selected');
+      if (!isSelected) classList.add('selected');
     }
 
     this.setState({ note: content, selectedCard: event.target });
@@ -174,15 +177,14 @@ export default class MainKanban extends Core {
   }
 
   deleteCard(event) {
-    this.setState({ selectedCard: event.target.parentElement });
+    this.setState({ selectedCard: event.target.parentElement.parentElement });
     const { selectedCard } = this.$state;
-    if (selectedCard.className === 'card') {
-      selectedCard?.remove();
+    if (selectedCard.nodeName === 'MAIN-CARD') {
+      selectedCard.remove();
       this.setState({ selectedCard: null });
+      this.updateCounter();
     }
   }
-
-  // moveCard() {}
 
   connectedCallback() {
     this.$('.add-button').addEventListener('click', (event) => {
@@ -211,10 +213,6 @@ export default class MainKanban extends Core {
       const { className } = event.target;
       if (className === 'delete-button') {
         this.deleteCard(event);
-        return;
-      }
-      if (className === 'drag-button') {
-        this.moveCard(event);
         return;
       }
       if (className === 'card' || className === 'card selected' || className === 'card-content') {

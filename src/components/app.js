@@ -1,5 +1,5 @@
 import Core from 'core/core';
-import { createTemplate } from 'utils/template';
+import createTemplate from 'utils/template';
 
 export default class MainApp extends Core {
   constructor() {

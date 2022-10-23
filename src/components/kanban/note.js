@@ -1,6 +1,6 @@
 import Core from 'core/core';
 import { getAddTextareaStyle } from 'utils/style';
-import { createTemplate } from 'utils/template';
+import createTemplate from 'utils/template';
 
 export default class KanbanNote extends Core {
   constructor() {
