@@ -1,6 +1,6 @@
 import Core from 'core/core';
 import { getHeaderStyle } from 'utils/style';
-import { createTemplate } from 'utils/template';
+import createTemplate from 'utils/template';
 
 export default class MainHeader extends Core {
   constructor() {
